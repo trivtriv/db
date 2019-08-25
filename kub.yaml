@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: sqldb-service-deployment
+  namespace: development
+  labels:
+    app: sqldb-service-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        apps: sqldb-service
+    spec:
+      containers:
+      - name: sqldb-service
+        image: index.docker.io/v1/:proj/db
+        ports:
+        - containerPort: 3306
